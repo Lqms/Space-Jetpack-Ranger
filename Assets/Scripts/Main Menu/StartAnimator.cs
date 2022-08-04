@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RangerMover : MonoBehaviour
+public class StartAnimator : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private Transform _destinationPoint;
@@ -12,6 +12,7 @@ public class RangerMover : MonoBehaviour
     private float _distance;
 
     public event UnityAction<float> Moved;
+    public event UnityAction AnimationFinished;
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class RangerMover : MonoBehaviour
             Moved?.Invoke(distanceProgress);
             yield return null;
         }
-        gameObject.SetActive(false);
+
+        AnimationFinished?.Invoke();
     }
 }

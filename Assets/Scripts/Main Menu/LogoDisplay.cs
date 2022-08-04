@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class LogoDisplay : MonoBehaviour
 {
-    [SerializeField] private RangerMover _ranger;
+    [SerializeField] private StartAnimator _startAnimator;
     [SerializeField] private Image _image;
 
     private void OnEnable()
     {
-        _ranger.Moved += OnRangerMoved;
+        _startAnimator.Moved += OnRangerMoved;
     }
 
     private void OnDisable()
     {
-        _ranger.Moved -= OnRangerMoved;
+        _startAnimator.Moved -= OnRangerMoved;
     }
 
     private void OnRangerMoved(float progress)
