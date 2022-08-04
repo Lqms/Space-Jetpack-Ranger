@@ -40,7 +40,9 @@ public class Enemy : MonoBehaviour
     {
         Speed = 0;
 
-        SpawnerContainer.HealthSpawner.Spawn(transform.position);
+        if (DestroyedByPlayer)
+            SpawnerContainer.HealthSpawner.Spawn(transform.position);
+
         LevelManager.EnemiesCount--;
         LevelManager.DefeatedEnemies++;
 
