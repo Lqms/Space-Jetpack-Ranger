@@ -5,12 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] protected SpawnerContainer SpawnerContainer;
-
     [SerializeField] private float _speed = 1;
     [SerializeField] private float _damage = 25;
     [SerializeField] private Health _health;
 
+    protected SpawnerContainer SpawnerContainer;
     protected bool DestroyedByPlayer = true;
 
     private void Update()

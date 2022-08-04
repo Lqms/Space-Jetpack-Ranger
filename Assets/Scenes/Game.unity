@@ -2786,7 +2786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _base: 250
-  _hit: {fileID: 8300000, guid: 6424d2ec2ee732e4190e4d8510dadf45, type: 3}
+  _hit: {fileID: 8300000, guid: 0d96e1d3371abac42abd09ddf1b0ea0e, type: 3}
   _death: {fileID: 8300000, guid: b809ae15328199f49889e03962405049, type: 3}
   _current: 250
   _max: 250
