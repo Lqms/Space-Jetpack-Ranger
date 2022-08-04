@@ -33,6 +33,8 @@ public class Suicider : Enemy
 
     private IEnumerator BlinkCoroutine()
     {
+        DestroyedByPlayer = false;
+
         for (int i = 0; i < 3; i++)
         {
             _spriteRenderer.color = _blinkColor;
@@ -42,7 +44,6 @@ public class Suicider : Enemy
             yield return new WaitForSeconds(0.2f);
         }
 
-        DestroyedByPlayer = false;
         Health.ApplyDamage(Health.Max);
     }
 
