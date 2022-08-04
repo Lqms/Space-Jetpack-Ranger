@@ -33,7 +33,7 @@ public class EnergyObject : Obstacle
 
     protected override void OnDied()
     {
-        if (_isDroppingEnergy)
+        if (_isDroppingEnergy && DestroyedByPlayer)
             SpawnerContainer.EnergySpawner.Spawn(transform.position);
 
         base.OnDied();

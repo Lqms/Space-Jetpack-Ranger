@@ -658,9 +658,9 @@ MonoBehaviour:
   _next: {fileID: 870140433908156203}
   _previous: {fileID: 870140434643824285}
   _slides:
-  - {fileID: 4488929572308531475, guid: 7b7b8fa40ee0a6b4fa2203dfcb0cbdfd, type: 3}
-  - {fileID: 823199116346160154, guid: 5a542299eaa7dae439e6938d9e2fbdee, type: 3}
-  - {fileID: 5276652661004123060, guid: fb488be4740efcd4d8a5e6215583cb97, type: 3}
+  - {fileID: 11400000, guid: 63083a178515bab40ac041dd872ac38c, type: 2}
+  - {fileID: 11400000, guid: 4e8437a58a3e63a4b9221781d7888676, type: 2}
+  - {fileID: 11400000, guid: 9622853ab15cee145ac3fe3cb8524713, type: 2}
 --- !u!1 &870140434643824283
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private float _damage = 25;
     [SerializeField] private Health _health;
 
+    protected bool DestroyedByPlayer = true;
+
     private void Update()
     {
         transform.Translate(Vector2.left * _speed * Time.deltaTime);
@@ -20,6 +22,7 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.TryGetComponent(out Player player))
         {
+            DestroyedByPlayer = false;
             player.ApplyDamage(_damage);
             _health.ApplyDamage(_health.Max);
         }
@@ -29,6 +32,7 @@ public class Obstacle : MonoBehaviour
     {
         _health = GetComponent<Health>();
         _health.Died += OnDied;
+        DestroyedByPlayer = true;
     }
 
     private void OnDisable()

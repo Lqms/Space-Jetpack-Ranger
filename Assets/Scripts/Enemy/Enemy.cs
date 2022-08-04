@@ -12,9 +12,11 @@ public class Enemy : MonoBehaviour
     protected SpawnerContainer SpawnerContainer;
     protected Transform ShootPoint;
     protected float Speed;
+    protected bool DestroyedByPlayer = true;
 
     protected virtual void OnEnable()
     {
+        DestroyedByPlayer = true;
         Speed = _maxSpeed;
         Health = GetComponent<Health>();
         Health.IncreaseMaxHealth(LevelManager.BonusHealthPerLevel * LevelManager.CurrentLevel);

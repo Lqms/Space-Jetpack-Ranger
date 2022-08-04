@@ -42,6 +42,7 @@ public class Suicider : Enemy
             yield return new WaitForSeconds(0.2f);
         }
 
+        DestroyedByPlayer = false;
         Health.ApplyDamage(Health.Max);
     }
 
@@ -49,6 +50,7 @@ public class Suicider : Enemy
     {
         base.OnDied();
 
-        SpawnerContainer.ExplosionSpawner.Spawn(transform.position);
+        if (DestroyedByPlayer)
+            SpawnerContainer.ExplosionSpawner.Spawn(transform.position);
     }
 }
