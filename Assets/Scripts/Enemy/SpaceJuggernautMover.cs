@@ -10,16 +10,8 @@ public class SpaceJuggernautMover : Enemy
     private float _secondsBetweenChangeBehaviour;
     private float _timeElapsed;
     private int _numberOfBehaviour;
-    private Coroutine _activeCoroutine;
     private bool _isShootPointReached = false;
-
-    private void ResetParam()
-    {
-        _secondsBetweenChangeBehaviour = Random.Range(_minSecondsBetweenChangeBehaviour, _maxSecondsBetweenChangeBehaviour);
-        _timeElapsed = 0;
-        _activeCoroutine = null;
-        _isShootPointReached = false;
-    }
+    private Coroutine _activeCoroutine;
 
     protected override void OnEnable()
     {
@@ -41,10 +33,19 @@ public class SpaceJuggernautMover : Enemy
             _numberOfBehaviour = Random.Range(0, 2);
         }
 
-        if (_numberOfBehaviour == 0 && _activeCoroutine == null)
-            MoveToRandomY();
-        else if (_numberOfBehaviour == 1 && _activeCoroutine == null)
-            MoveToPlayerY();
+        if (_activeCoroutine != null)
+            return;
+
+        switch (_numberOfBehaviour)
+        {
+            case 0:
+                MoveToRandomY();
+                break;
+
+            case 1:
+                MoveToPlayerY();
+                break;
+        }
     }
 
     private void MoveToShootPoint()
@@ -77,5 +78,13 @@ public class SpaceJuggernautMover : Enemy
         }
 
         _activeCoroutine = null;
+    }
+
+    private void ResetParam()
+    {
+        _secondsBetweenChangeBehaviour = Random.Range(_minSecondsBetweenChangeBehaviour, _maxSecondsBetweenChangeBehaviour);
+        _timeElapsed = 0;
+        _activeCoroutine = null;
+        _isShootPointReached = false;
     }
 }

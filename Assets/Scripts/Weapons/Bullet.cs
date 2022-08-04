@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void Initialize(Vector2 direction, float damage)
+    public void Setup(Vector2 direction, float damage)
     {
         _direction = direction;
         _damage = damage;
