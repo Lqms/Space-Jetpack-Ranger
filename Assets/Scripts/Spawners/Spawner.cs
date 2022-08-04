@@ -4,46 +4,48 @@ using UnityEngine;
 
 public class Spawner : ObjectPool
 {
-    [SerializeField] protected Player Player;
-    [SerializeField] protected GameObject ObjectPrefab;
-    [SerializeField] protected float MinSecondsBetweenSpawn;
-    [SerializeField] protected float MaxSecondsBetweenSpawn;
-    [SerializeField] protected bool IsSpawningOnTimer;
+    [SerializeField] protected SpawnerContainer SpawnerContainer;
+
+    [SerializeField] private GameObject _objectPrefab;
+    [SerializeField] private bool _isSpawningOnTimer;
+    [SerializeField] private float _minSecondsBetweenSpawn;
+    [SerializeField] private float _maxSecondsBetweenSpawn;
 
     private float _secondsBetweenSpawn;
     private float _elapsedTime;
-    private float _playerHeight;
 
-    protected virtual void Start()
+    private void Start()
     {
-        if (IsSpawningOnTimer)
-            _secondsBetweenSpawn = Random.Range(MinSecondsBetweenSpawn, MaxSecondsBetweenSpawn);
+        if (_isSpawningOnTimer)
+            _secondsBetweenSpawn = Random.Range(_minSecondsBetweenSpawn, _maxSecondsBetweenSpawn);
 
-        _playerHeight = Player.GetComponent<SpriteRenderer>().sprite.rect.size.y;
-        Initialize(ObjectPrefab);
+        Initialize(_objectPrefab);
     }
 
-    protected virtual void Update()
+    private void Update()
     {
-        if (IsSpawningOnTimer == false)
+        if (_isSpawningOnTimer == false)
             return;
 
         _elapsedTime += Time.deltaTime;
 
         if (_elapsedTime >= _secondsBetweenSpawn)
-        {
             if (TryGetObject(out GameObject obj))
-            {
                 Spawn(obj);
-            }
-        }
     }
 
-    protected virtual void Spawn(GameObject obj)
+    public virtual void Spawn(GameObject obj)
     {
         _elapsedTime = 0;
-        _secondsBetweenSpawn = Random.Range(MinSecondsBetweenSpawn, MaxSecondsBetweenSpawn);
-        Setup(obj, new Vector2(transform.position.x, Randomizer.RandomPositionY()));
+        _secondsBetweenSpawn = Random.Range(_minSecondsBetweenSpawn, _maxSecondsBetweenSpawn);
+        Vector2 position = new Vector2(transform.position.x, Randomizer.RandomPositionY());
+        Setup(obj, position);
+    }
+
+    public virtual void Spawn(Vector2 position)
+    {
+        if (TryGetObject(out GameObject obj))
+            Setup(obj, position);
     }
 
     protected virtual void Setup(GameObject obj, Vector2 position)

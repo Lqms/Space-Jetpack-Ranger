@@ -49,6 +49,6 @@ public class Suicider : Enemy
     {
         base.OnDied();
 
-        ExplosionSpawner.SpawnExplosion(transform.position);
+        SpawnerContainer.ExplosionSpawner.Spawn(transform.position);
     }
 }

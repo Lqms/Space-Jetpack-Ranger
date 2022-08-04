@@ -838,7 +838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startAnimator: {fileID: 463009298}
   _start: {fileID: 321296900}
-  _upgrades: {fileID: 0}
+  _upgrades: {fileID: 1012491282}
   _settings: {fileID: 1455253513}
   _exit: {fileID: 1838133916}
 --- !u!1 &1012491280

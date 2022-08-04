@@ -7,7 +7,6 @@ public class EnergyObject : Obstacle
     [SerializeField] private ParticleSystem _energyBlinksPS;
     [SerializeField] private int _chanceToDrop;
 
-    private EnergySpawner _energySpawner;
     private bool _isDroppingEnergy;
 
     protected override void OnEnable()
@@ -27,17 +26,15 @@ public class EnergyObject : Obstacle
         }
     }
 
-    public void Initialize(EnergySpawner energySpawner)
+    public void Setup(SpawnerContainer spawnerContainer)
     {
-        _energySpawner = energySpawner;
+        SpawnerContainer = spawnerContainer;
     }
 
     protected override void OnDied()
     {
         if (_isDroppingEnergy)
-        {
-            _energySpawner.SpawnEnergy(transform.position);
-        }
+            SpawnerContainer.EnergySpawner.Spawn(transform.position);
 
         base.OnDied();
     }

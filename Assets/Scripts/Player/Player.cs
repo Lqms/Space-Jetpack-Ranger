@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
     {
         if (collision.TryGetComponent(out EnergyItem energy))
         {
-            _energy = Mathf.Clamp(_energy + energy.AmountOfRestoredEnergy, 0, _maxEnergy);
+            _energy = Mathf.Clamp(25, 0, _maxEnergy);
 
             if (_energy > 0)
                 _rigidBody.gravityScale = 0;
@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
 
         if (collision.TryGetComponent(out HealthItem health))
         {
-            Heal(health.AmountOfRestoredHealth);
+            Heal(25);
             health.gameObject.SetActive(false);
         }
     }

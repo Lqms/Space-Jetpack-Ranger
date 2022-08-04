@@ -14,6 +14,9 @@ public class Explosion : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// calls in game object's animation
+    /// </summary>
     public void Disable()
     {
         gameObject.SetActive(false);

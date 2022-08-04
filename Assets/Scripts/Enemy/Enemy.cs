@@ -7,12 +7,11 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _maxSpeed;
     
-    protected float Speed;
     protected Health Health;
     protected Player Target;
-    protected ExplosionSpawner ExplosionSpawner;
-    protected HealthSpawner HealthSpawner;
+    protected SpawnerContainer SpawnerContainer;
     protected Transform ShootPoint;
+    protected float Speed;
 
     protected virtual void OnEnable()
     {
@@ -28,22 +27,21 @@ public class Enemy : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public virtual void Setup(Player player, ExplosionSpawner explosionSpawner, Transform shootPoint, HealthSpawner healthSpawner)
+    public void Setup(Player target, SpawnerContainer spawnerContainer, Transform shootPoint)
     {
-        Target = player;
-        ExplosionSpawner = explosionSpawner;
+        Target = target;
+        SpawnerContainer = spawnerContainer;
         ShootPoint = shootPoint;
-        HealthSpawner = healthSpawner;
     }
 
     protected virtual void OnDied()
     {
-        HealthSpawner.SpawnHealth(transform.position, Health.Max);
         Speed = 0;
+
+        SpawnerContainer.HealthSpawner.Spawn(transform.position);
         LevelManager.EnemiesCount--;
         LevelManager.DefeatedEnemies++;
-        Debug.Log("Defeated enemies " + LevelManager.DefeatedEnemies);
+
         gameObject.SetActive(false);
-        Speed = _maxSpeed;
     }
 }

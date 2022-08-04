@@ -9630,7 +9630,7 @@ GameObject:
   - component: {fileID: 1068510880126088748}
   - component: {fileID: 1068510880126088749}
   m_Layer: 0
-  m_Name: Energy
+  m_Name: EnergyItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9681,4 +9681,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  _amountOfRestoredEnergy: 25
