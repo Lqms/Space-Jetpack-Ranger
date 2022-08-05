@@ -39,13 +39,13 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void IncreaseMaxHealth(float amountOfIncrease)
+    public void IncreaseMaxHealth(float amount)
     {
-        _max = _base + amountOfIncrease;
+        _max = _base + amount;
     }
 
-    public void Heal(float amountOfHeal)
+    public void Restore(float amount)
     {
-        _current = Mathf.Clamp(_current + amountOfHeal, 0, _max);
+        _current = Mathf.Clamp(_current + amount, 0, _max);
     }
 }

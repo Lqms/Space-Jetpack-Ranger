@@ -22,7 +22,7 @@ public class PlayerCollisionHandler : MonoBehaviour
 
         if (collision.TryGetComponent(out HealthItem health))
         {
-            _player.RestoreHealth(25);
+            _player.RestoreHealth();
             health.gameObject.SetActive(false);
         }
     }
