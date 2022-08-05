@@ -178,9 +178,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weapon: {fileID: 3648206265460759840, guid: 7d9e155e25dc6104e9f3911647178f60, type: 3}
-  _reloadTime: 1
-  _damage: 0
   _shootPoint: {fileID: 5688924588348289231}
+  _reloadTime: 1
+  _damage: 15
+  _shootSpreadY: 2
 --- !u!1 &5293442774697175728
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,11 +8,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _maxSpeed;
     
     protected Health Health;
-    protected Player Target;
     protected SpawnerContainer SpawnerContainer;
     protected Transform ShootPoint;
     protected float Speed;
     protected bool DestroyedByPlayer = true;
+
+    public Player Target { get; protected set; }
 
     protected virtual void OnEnable()
     {
