@@ -19,6 +19,7 @@ public class Energy : MonoBehaviour
     private void OnEnable()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
+        _rigidBody.gravityScale = 0;
         _current = _max;
     }
 
@@ -35,7 +36,7 @@ public class Energy : MonoBehaviour
 
     public void Restore(float amount)
     {
-        _current = Mathf.Clamp(amount, 0, _max);
+        _current = Mathf.Clamp(_current + amount, 0, _max);
 
         if (_current > 0)
             _rigidBody.gravityScale = 0;

@@ -49,14 +49,14 @@ public class Player : MonoBehaviour
 
     public void RestoreHealth()
     {
-        float amount = _percentOfRestoringHealth / 100;
+        float amount = _percentOfRestoringHealth / 100 * _health.Max;
         _health.Restore(amount);
         HealthChanged?.Invoke(_health.Current / _health.Max);
     }
 
     public void RestoreEnergy()
     {
-        float amount = _percentOfRestoringEnergy / 100;
+        float amount = _percentOfRestoringEnergy / 100 * _energy.Max;
         _energy.Restore(amount);
         EnergyChanged?.Invoke(_energy.Current / _energy.Max);
     }
