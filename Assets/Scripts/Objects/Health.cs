@@ -34,8 +34,8 @@ public class Health : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlayClip(_hit);
             Damaged?.Invoke();
+            AudioManager.Instance.PlayClip(_hit);
         }
     }
 

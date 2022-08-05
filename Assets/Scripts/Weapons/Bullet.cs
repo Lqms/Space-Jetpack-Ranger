@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _timeToDestroy;
     [SerializeField] private bool _isDestroyingOnHit;
+    [SerializeField] private float _baseDamage;
 
     private float _damage;
     private Vector2 _direction;
@@ -35,6 +36,6 @@ public class Bullet : MonoBehaviour
     public void Setup(Vector2 direction, float damage)
     {
         _direction = direction;
-        _damage = damage;
+        _damage = _baseDamage + damage;
     }
 }

@@ -10,8 +10,9 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _maxEnergy = 100;
-    [SerializeField] private float _energy;
     [SerializeField] private float _energyWastePerSecond = 2;
+
+    private float _energy;
 
     private Rigidbody2D _rigidBody;
     private Health _health;
@@ -38,32 +39,12 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        _health = GetComponent<Health>();
         _rigidBody = GetComponent<Rigidbody2D>();
         _rigidBody.gravityScale = 0;
-
         _energy = _maxEnergy;
-        _health = GetComponent<Health>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out EnergyItem energy))
-        {
-            _energy = Mathf.Clamp(25, 0, _maxEnergy);
-
-            if (_energy > 0)
-                _rigidBody.gravityScale = 0;
-
-            EnergyChanged?.Invoke(_energy / _maxEnergy);
-            energy.gameObject.SetActive(false);
-        }
-
-        if (collision.TryGetComponent(out HealthItem health))
-        {
-            Heal(25);
-            health.gameObject.SetActive(false);
-        }
-    }
 
     private void FixedUpdate()
     {
@@ -83,10 +64,20 @@ public class Player : MonoBehaviour
         HealthChanged?.Invoke(_health.Current/_health.Max);
     }
 
-    public void Heal(float amountOfHeal)
+    public void RestoreHealth(float amountOfHeal)
     {
         _health.Heal(amountOfHeal);
         HealthChanged?.Invoke(_health.Current / _health.Max);
+    }
+
+    public void RestoreEnergy()
+    {
+        _energy = Mathf.Clamp(25, 0, _maxEnergy);
+
+        if (_energy > 0)
+            _rigidBody.gravityScale = 0;
+
+        EnergyChanged?.Invoke(_energy / _maxEnergy);
     }
 
     private void OnDied()
@@ -94,6 +85,6 @@ public class Player : MonoBehaviour
         _combat.enabled = false;
         _mover.enabled = false;
         Died?.Invoke();
-        gameObject.SetActive(false); // анимацию мб
+        gameObject.SetActive(false);
     }
 }
