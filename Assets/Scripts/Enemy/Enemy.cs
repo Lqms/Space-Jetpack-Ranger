@@ -6,6 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _maxSpeed;
+    [SerializeField] private int _basedBounty;
     
     protected Health Health;
     protected SpawnerContainer SpawnerContainer;
@@ -13,10 +14,13 @@ public class Enemy : MonoBehaviour
     protected float Speed;
     protected bool DestroyedByPlayer = true;
 
+    private int _currentBounty;
+
     public Player Target { get; protected set; }
 
     protected virtual void OnEnable()
     {
+        _currentBounty = _basedBounty + LevelManager.CurrentLevel * LevelManager.BonusBountyPerLevel;
         DestroyedByPlayer = true;
         Speed = _maxSpeed;
         Health = GetComponent<Health>();
@@ -42,7 +46,11 @@ public class Enemy : MonoBehaviour
         Speed = 0;
 
         if (DestroyedByPlayer)
+        {
             SpawnerContainer.HealthSpawner.Spawn(transform.position);
+            SpawnerContainer.BountyUISpawner.Spawn(transform.position);
+            SpawnerContainer.BountyUISpawner.Bounty.Setup(_currentBounty);
+        }
 
         LevelManager.EnemiesCount--;
         LevelManager.DefeatedEnemies++;

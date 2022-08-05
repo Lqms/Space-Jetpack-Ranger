@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 2
+  _basedBounty: 25
   _beep: {fileID: 8300000, guid: 8faba43ae405538438ab99792233abb2, type: 3}
 --- !u!114 &7359345183142056317
 MonoBehaviour:

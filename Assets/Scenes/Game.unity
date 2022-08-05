@@ -1775,6 +1775,7 @@ Transform:
   - {fileID: 1389719161}
   - {fileID: 1512335928}
   - {fileID: 489084923}
+  - {fileID: 1446233746}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1790,6 +1791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d485ba64369164889ba8ac6608c344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bountyUISpawner: {fileID: 1446233747}
   _energyObjectSpawner: {fileID: 489084924}
   _energySpawner: {fileID: 9774369}
   _explosionSpawner: {fileID: 1365826455}
@@ -1896,6 +1898,55 @@ MonoBehaviour:
   _maxSecondsBetweenSpawn: 8
   _shootPoint: {fileID: 664277317}
   _player: {fileID: 1957310942}
+--- !u!1 &1446233745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1446233746}
+  - component: {fileID: 1446233747}
+  m_Layer: 0
+  m_Name: BountyUISpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1446233746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446233745}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1350295793}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1446233747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446233745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc680b756a54744281f4f5c3ff7ed7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _capacity: 10
+  SpawnerContainer: {fileID: 1350295794}
+  _objectPrefab: {fileID: 3388654340539784363, guid: 9e617dbaa4fb940409ccb76a9b8bbd6b, type: 3}
+  _isSpawningOnTimer: 0
+  _minSecondsBetweenSpawn: 0
+  _maxSecondsBetweenSpawn: 0
 --- !u!1 &1489144156
 GameObject:
   m_ObjectHideFlags: 0

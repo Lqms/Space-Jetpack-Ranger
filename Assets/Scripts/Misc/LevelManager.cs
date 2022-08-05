@@ -12,4 +12,5 @@ public static class LevelManager
 
     public static float BonusHealthPerLevel = 10;
     public static float BonusDamagePerLevel = 5;
+    public static int BonusBountyPerLevel = 25;
 }
