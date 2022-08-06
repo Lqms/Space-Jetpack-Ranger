@@ -55,7 +55,6 @@ public class Menu : MonoBehaviour
 
     private void OnStartButtonClicked()
     {
-        Debug.Log("Start");
         SceneManager.LoadScene(1);
     }
 
@@ -71,7 +70,6 @@ public class Menu : MonoBehaviour
 
     private void OnExitButtonClicked()
     {
-        Debug.Log("Exit");
         Application.Quit();
     }
 }

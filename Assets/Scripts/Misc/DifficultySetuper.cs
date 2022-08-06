@@ -40,6 +40,5 @@ public class DifficultySetuper : MonoBehaviour
         LevelManager.EnemiesToLevelUp += 1;
 
         LevelUpped?.Invoke(LevelManager.CurrentLevel);
-        Debug.Log("Level " + LevelManager.CurrentLevel);
     }
 }
