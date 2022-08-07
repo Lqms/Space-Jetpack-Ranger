@@ -1,37 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Energy : MonoBehaviour
 {
     [SerializeField] private float _max = 100;
     [SerializeField] private float _wastePerSecond = 2;
 
-    private Rigidbody2D _rigidBody;
     private float _current;
+    private bool _isRunOut = false;
 
     public float Max => _max;
     public float Current => _current;
 
-    private const float GravityScale = 0.05f;
+    public event UnityAction RunOut;
+    public event UnityAction Restored;
 
     private void OnEnable()
     {
-        _rigidBody = GetComponent<Rigidbody2D>();
-        _rigidBody.gravityScale = 0;
         _current = _max;
     }
 
     private void FixedUpdate()
     {
-        if (_current <= 0)
+        if (_current <= 0 && _isRunOut == false)
         {
-            _rigidBody.gravityScale = GravityScale;
+            _isRunOut = true;
+            RunOut?.Invoke();
             return;
         }
 
-        _current -= Time.fixedDeltaTime * _wastePerSecond;
+        if (_current > 0)
+            _current -= Time.fixedDeltaTime * _wastePerSecond;
     }
 
     public void Restore(float amount)
@@ -39,6 +40,9 @@ public class Energy : MonoBehaviour
         _current = Mathf.Clamp(_current + amount, 0, _max);
 
         if (_current > 0)
-            _rigidBody.gravityScale = 0;
+        {
+            Restored?.Invoke();
+            _isRunOut = false;
+        }
     }
 }

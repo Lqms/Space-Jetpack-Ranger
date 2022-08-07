@@ -135,12 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29cc79c45e4565b45a042c1a764fa01a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnerContainer: {fileID: 0}
   _speed: 3
   _damage: 25
   _health: {fileID: 0}
   _energyBlinksPS: {fileID: 5357683370955741656}
-  _chanceToDrop: 30
+  _chanceToDrop: 40
 --- !u!114 &4081581982528303373
 MonoBehaviour:
   m_ObjectHideFlags: 0
