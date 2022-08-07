@@ -10,7 +10,7 @@ public class Explosion : MonoBehaviour
     {
         if (collision.TryGetComponent(out Health health))
         {
-            health.ApplyDamage(_damage + LevelManager.CurrentLevel * LevelManager.BonusDamagePerLevel);
+            health.ApplyDamage(_damage + LevelManager.CurrentWave * LevelManager.BonusDamagePerLevel);
         }
     }
 

@@ -28,7 +28,7 @@ public class SpaceJuggernautShooter : MonoBehaviour
             if (transform.position.y >= _mover.Target.transform.position.y - _shootSpreadY && 
                 transform.position.y <= _mover.Target.transform.position.y + _shootSpreadY)
             {
-                _weapon.Shoot(_shootPoint, Vector2.left, _damage + LevelManager.CurrentLevel * LevelManager.BonusDamagePerLevel);
+                _weapon.Shoot(_shootPoint, Vector2.left, _damage + LevelManager.CurrentWave * LevelManager.BonusDamagePerLevel);
                 _timeElapsed = 0;
             }
         }

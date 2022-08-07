@@ -172,53 +172,6 @@ MonoBehaviour:
   _isSpawningOnTimer: 0
   _minSecondsBetweenSpawn: 0
   _maxSecondsBetweenSpawn: 0
---- !u!1 &144704347
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 144704348}
-  - component: {fileID: 144704349}
-  m_Layer: 0
-  m_Name: DifficultySetuper
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &144704348
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144704347}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2102979322}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &144704349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144704347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fca83ff05b5235742bf0a49d73658a02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxEnemyCount: 3
-  _enemiesToLevelUp: 10
-  _bonusHealthPerLevel: 10
-  _bonusDamagePerLevel: 5
 --- !u!1 &321656846
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,7 +932,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wave: {fileID: 937359372}
-  _difficultySetuper: {fileID: 144704349}
 --- !u!1 &1002965165
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,7 +2013,6 @@ Transform:
   m_Children:
   - {fileID: 1489144159}
   - {fileID: 1114805100}
-  - {fileID: 144704348}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -3,24 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DifficultySetuper : MonoBehaviour
+public class DifficultyManager : MonoBehaviour
 {
     [SerializeField] private float _maxEnemyCount = 3;
     [SerializeField] private int _enemiesToLevelUp = 10;
     [SerializeField] private int _bonusHealthPerLevel = 10;
     [SerializeField] private int _bonusDamagePerLevel = 5;
+    [SerializeField] private int _waveMultiplicityToSave = 10;
+
+    public static DifficultyManager Instance { get; private set; }
 
     public event UnityAction<int> LevelUpped;
 
-    private void Awake()
+    private void OnEnable()
     {
-        LevelManager.CurrentLevel = 1;
-        LevelManager.DefeatedEnemies = 0;
-        LevelManager.EnemiesCount = 0;
+        if (Instance != null)
+            Destroy(this);
+
+        if (Instance == null)
+            Instance = this;
+
+        if (Instance == this)
+            DontDestroyOnLoad(this);
+        else
+            Destroy(this);
+
+        ResetLevel();
+
         LevelManager.EnemiesMaxCount = _maxEnemyCount;
         LevelManager.EnemiesToLevelUp = _enemiesToLevelUp;
         LevelManager.BonusHealthPerLevel = _bonusHealthPerLevel;
         LevelManager.BonusDamagePerLevel = _bonusDamagePerLevel;
+        LevelManager.WaveMultiplicityToSave = _waveMultiplicityToSave;
+    }
+    private void OnDisable()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 
     private void Update()
@@ -33,12 +52,21 @@ public class DifficultySetuper : MonoBehaviour
 
     public void LevelUp()
     {
-        LevelManager.CurrentLevel++;
+        LevelManager.CurrentWave++;
+        PlayerManager.Instance.TrySaveWave();
+
         LevelManager.DefeatedEnemies = 0;
         LevelManager.EnemiesCount = 0;
         LevelManager.EnemiesMaxCount += 0.1f;
         LevelManager.EnemiesToLevelUp += 1;
 
-        LevelUpped?.Invoke(LevelManager.CurrentLevel);
+        LevelUpped?.Invoke(LevelManager.CurrentWave);
+    }
+
+    public void ResetLevel()
+    {
+        LevelManager.CurrentWave = PlayerManager.Instance.WaveNumber;
+        LevelManager.DefeatedEnemies = 0;
+        LevelManager.EnemiesCount = 0;
     }
 }

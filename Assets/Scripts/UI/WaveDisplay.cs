@@ -7,20 +7,19 @@ using DG.Tweening;
 public class WaveDisplay : MonoBehaviour
 {
     [SerializeField] private Text _wave;
-    [SerializeField] private DifficultySetuper _difficultySetuper;
 
     private Coroutine _activeCoroutine;
 
     private void OnEnable()
     {
-        _difficultySetuper.LevelUpped += OnLevelUpped;
+        DifficultyManager.Instance.LevelUpped += OnLevelUpped;
 
-        OnLevelUpped(LevelManager.CurrentLevel);
+        OnLevelUpped(PlayerManager.Instance.WaveNumber);
     }
 
     private void OnDisable()
     {
-        _difficultySetuper.LevelUpped -= OnLevelUpped;
+        DifficultyManager.Instance.LevelUpped -= OnLevelUpped;
     }
 
     private void OnLevelUpped(int level)

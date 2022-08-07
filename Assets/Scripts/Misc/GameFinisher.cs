@@ -37,6 +37,8 @@ public class GameFinisher : MonoBehaviour
             yield return null;
         }
 
+        DifficultyManager.Instance.ResetLevel();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

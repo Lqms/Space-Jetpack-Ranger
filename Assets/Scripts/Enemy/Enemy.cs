@@ -20,11 +20,11 @@ public class Enemy : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        _currentBounty = _basedBounty + LevelManager.CurrentLevel * LevelManager.BonusBountyPerLevel;
+        _currentBounty = _basedBounty + LevelManager.CurrentWave * LevelManager.BonusBountyPerLevel;
         DestroyedByPlayer = true;
         Speed = _maxSpeed;
         Health = GetComponent<Health>();
-        Health.IncreaseMaxHealth(LevelManager.BonusHealthPerLevel * LevelManager.CurrentLevel);
+        Health.IncreaseMaxHealth(LevelManager.BonusHealthPerLevel * LevelManager.CurrentWave);
         Health.Died += OnDied;
     }
 
