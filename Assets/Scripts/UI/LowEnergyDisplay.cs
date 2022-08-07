@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class LowEnergyDisplay : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField] private AudioClip _lowEnergy;
+    [SerializeField] private AudioClip _deactivatedJetpack;
 
     [SerializeField] private Color _transparent;
     [SerializeField] private Color _low;
@@ -40,6 +42,7 @@ public class LowEnergyDisplay : MonoBehaviour
 
         if (_blinkCoroutine != null)
         {
+            AudioManager.Instance.PlayClip(_deactivatedJetpack);
             StopCoroutine(_blinkCoroutine);
             _blinkCoroutine = null;
         }
@@ -66,6 +69,7 @@ public class LowEnergyDisplay : MonoBehaviour
     {
         while (true)
         {
+            AudioManager.Instance.PlayClip(_lowEnergy);
             _image.color = _low;
             yield return _waitTime;
             _image.color = _transparent;
