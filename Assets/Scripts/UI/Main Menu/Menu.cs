@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     [SerializeField] private StartAnimator _startAnimator;
+    [SerializeField] private Settings _settingsPanel;
 
     [Header("UI Elements")]
     [SerializeField] private Button _start;
@@ -20,7 +22,9 @@ public class Menu : MonoBehaviour
     private void OnEnable()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
+
         _startAnimator.AnimationFinished += OnAnimationFinished;
+        _settingsPanel.Closed += OnSettingsClosed;
 
         _start.onClick.AddListener(OnStartButtonClicked);
         _upgrades.onClick.AddListener(OnUpgradesButtonClicked);
@@ -36,6 +40,7 @@ public class Menu : MonoBehaviour
     private void OnDisable()
     {
         _startAnimator.AnimationFinished -= OnAnimationFinished;
+        _settingsPanel.Closed -= OnSettingsClosed;
 
         _start.onClick.RemoveListener(OnStartButtonClicked);
         _upgrades.onClick.RemoveListener(OnUpgradesButtonClicked);
@@ -65,7 +70,14 @@ public class Menu : MonoBehaviour
 
     private void OnSettingsButtonClicked()
     {
-        Debug.Log("Settings");
+        _canvasGroup.alpha = 0;
+        _settingsPanel.gameObject.SetActive(true);
+    }
+
+    private void OnSettingsClosed()
+    {
+        _canvasGroup.alpha = 1;
+        _settingsPanel.gameObject.SetActive(false);
     }
 
     private void OnExitButtonClicked()

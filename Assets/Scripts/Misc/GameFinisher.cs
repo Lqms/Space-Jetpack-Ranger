@@ -10,15 +10,15 @@ public class GameFinisher : MonoBehaviour
 
     private RectTransform _rectTransform;
 
-    private void OnEnable()
+    private void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
-        _player.Died += EndGame;       
+        _player.Health.Died += EndGame;       
     }
 
     private void OnDisable()
     {
-        _player.Died -= EndGame;
+        _player.Health.Died -= EndGame;
     }
 
     private void EndGame()

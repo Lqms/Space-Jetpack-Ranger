@@ -17,9 +17,10 @@ public class Player : MonoBehaviour
     private PlayerCombat _combat;
     private PlayerMover _mover;
 
+    public Health Health => _health;
+
     public event UnityAction<float> HealthChanged;
     public event UnityAction<float> EnergyChanged;
-    public event UnityAction Died;
 
     private void OnEnable()
     {
@@ -29,22 +30,18 @@ public class Player : MonoBehaviour
         _energy = GetComponent<Energy>();
 
         _health.Died += OnDied;
+        _health.Damaged += OnDamaged;
     }
 
     private void OnDisable()
     {
         _health.Died -= OnDied;
+        _health.Damaged -= OnDamaged;
     }
 
     private void FixedUpdate()
     {
         EnergyChanged?.Invoke(_energy.Current/_energy.Max);
-    }
-
-    public void ApplyDamage(float damage)
-    {
-        _health.ApplyDamage(damage);
-        HealthChanged?.Invoke(_health.Current/_health.Max);
     }
 
     public void RestoreHealth()
@@ -65,7 +62,11 @@ public class Player : MonoBehaviour
     {
         _combat.enabled = false;
         _mover.enabled = false;
-        Died?.Invoke();
         gameObject.SetActive(false);
+    }
+
+    private void OnDamaged()
+    {
+        HealthChanged?.Invoke(_health.Current / _health.Max);
     }
 }

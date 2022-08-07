@@ -8,9 +8,9 @@ public class Explosion : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Player player))
+        if (collision.TryGetComponent(out Health health))
         {
-            player.ApplyDamage(_damage + LevelManager.CurrentLevel * LevelManager.BonusDamagePerLevel);
+            health.ApplyDamage(_damage + LevelManager.CurrentLevel * LevelManager.BonusDamagePerLevel);
         }
     }
 

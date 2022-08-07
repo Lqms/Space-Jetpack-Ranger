@@ -22,7 +22,7 @@ public class Obstacle : MonoBehaviour
         if (collision.TryGetComponent(out Player player))
         {
             DestroyedByPlayer = false;
-            player.ApplyDamage(_damage);
+            player.Health.ApplyDamage(_damage);
             _health.ApplyDamage(_health.Max);
         }
     }
