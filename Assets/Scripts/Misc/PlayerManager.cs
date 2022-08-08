@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get; private set; }
 
     public int WaveNumber { get; private set; } = 1;
+    public int MoneyAmount { get; private set; } = 0;
 
     private const string Wave = "Wave";
     private const string Money = "Money";
@@ -28,6 +29,9 @@ public class PlayerManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey(Wave))
             WaveNumber = PlayerPrefs.GetInt(Wave);
+
+        if (PlayerPrefs.HasKey(Money))
+            MoneyAmount = PlayerPrefs.GetInt(Money);
     }
 
     private void OnDisable()
@@ -39,6 +43,7 @@ public class PlayerManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         TrySaveWave();
+        SaveMoney();
     }
 
     public void TrySaveWave()
@@ -48,5 +53,15 @@ public class PlayerManager : MonoBehaviour
             PlayerPrefs.SetInt(Wave, LevelManager.CurrentWave);
             WaveNumber = PlayerPrefs.GetInt(Wave);
         }
+    }
+
+    public void IncreaseMoney(int amount)
+    {
+        MoneyAmount += amount;
+    }
+
+    public void SaveMoney()
+    {
+        PlayerPrefs.SetInt(Money, MoneyAmount);
     }
 }

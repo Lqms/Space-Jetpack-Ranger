@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
             SpawnerContainer.HealthSpawner.Spawn(transform.position);
             SpawnerContainer.BountyUISpawner.Spawn(transform.position);
             SpawnerContainer.BountyUISpawner.Bounty.Setup(_currentBounty);
+            PlayerManager.Instance.IncreaseMoney(_currentBounty);
         }
 
         LevelManager.EnemiesCount--;
