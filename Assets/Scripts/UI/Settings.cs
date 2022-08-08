@@ -7,6 +7,11 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
+    [Header("Panels")]
+    [SerializeField] private PanelHints _panelHints;
+    [SerializeField] private PanelStatistics _panelStatistics;
+
+    [Header("Settings UI objects")]
     [SerializeField] private Slider _volume;
     [SerializeField] private Button _instructions;
     [SerializeField] private Button _statistics;
@@ -38,12 +43,12 @@ public class Settings : MonoBehaviour
 
     private void OpenInstructions()
     {
-        Debug.Log("Instuctions");
+        _panelHints.gameObject.SetActive(true);
     }
 
     private void OpenStatistics()
     {
-        Debug.Log("Statistics");
+        _panelStatistics.gameObject.SetActive(true);
     }
 
     private void BackToMainMenu()
