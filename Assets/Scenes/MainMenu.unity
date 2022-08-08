@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de075d615c59dac48979ac8ec6f37957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 8
+  _speed: 12
   _destinationPoint: {fileID: 1538472178}
   _startPoint: {fileID: 231216564}
 --- !u!95 &463009299

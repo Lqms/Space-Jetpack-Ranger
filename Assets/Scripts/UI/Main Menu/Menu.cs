@@ -65,7 +65,7 @@ public class Menu : MonoBehaviour
 
     private void OnUpgradesButtonClicked()
     {
-        Debug.Log("Upgrades");
+        SceneManager.LoadScene(2);
     }
 
     private void OnSettingsButtonClicked()
