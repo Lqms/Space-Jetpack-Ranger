@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
+    [SerializeField] private AudioClip _notEnoughtMoney;
+
     public static PlayerManager Instance { get; private set; }
 
     public int WaveNumber { get; private set; } = 1;
     public int MoneyAmount { get; private set; } = 0;
+
+    public event UnityAction<float> MoneyChanged;
 
     private const string Wave = "Wave";
     private const string Money = "Money";
@@ -43,25 +48,52 @@ public class PlayerManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         TrySaveWave();
-        SaveMoney();
+        TrySaveMoney();
     }
 
-    public void TrySaveWave()
+    public bool TrySaveWave()
     {
-        if (LevelManager.CurrentWave % LevelManager.WaveMultiplicityToSave == 0)
+        bool isWaveMultipliced = LevelManager.CurrentWave % LevelManager.WaveMultiplicityToSave == 0;
+
+        if (isWaveMultipliced)
         {
             PlayerPrefs.SetInt(Wave, LevelManager.CurrentWave);
             WaveNumber = PlayerPrefs.GetInt(Wave);
         }
+
+        return isWaveMultipliced;
     }
 
     public void IncreaseMoney(int amount)
     {
         MoneyAmount += amount;
+        MoneyChanged?.Invoke(MoneyAmount);
     }
 
-    public void SaveMoney()
+    public bool TrySaveMoney()
     {
-        PlayerPrefs.SetInt(Money, MoneyAmount);
+        bool isWaveMultipliced = LevelManager.CurrentWave % LevelManager.WaveMultiplicityToSave == 0;
+
+        if (isWaveMultipliced)
+        {
+            PlayerPrefs.SetInt(Money, MoneyAmount);
+        }
+
+        return isWaveMultipliced;
+    }
+
+    public bool TrySpendMoney(int amount)
+    {
+        if (MoneyAmount < amount)
+        {
+            AudioManager.Instance.PlayClip(_notEnoughtMoney);
+        }
+        else
+        {
+            MoneyAmount -= amount;
+            MoneyChanged?.Invoke(MoneyAmount);
+        }
+
+        return MoneyAmount > amount;
     }
 }

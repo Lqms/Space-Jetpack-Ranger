@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 3
-  _basedBounty: 50
+  _basedBounty: 15
   _minSecondsBetweenChangeBehaviour: 4
   _maxSecondsBetweenChangeBehaviour: 6
 --- !u!114 &1838039670526512968
