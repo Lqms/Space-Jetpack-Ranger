@@ -10,6 +10,8 @@ public class DifficultyManager : MonoBehaviour
     [SerializeField] private int _bonusHealthPerLevel = 10;
     [SerializeField] private int _bonusDamagePerLevel = 5;
     [SerializeField] private int _waveMultiplicityToSave = 10;
+    [SerializeField] private float _extraMaxEnemiesCountPerLevel = 0.1f;
+    [SerializeField] private float _extraEnemiesToLevelUpPerLevel = 0.2f;
 
     public static DifficultyManager Instance { get; private set; }
 
@@ -57,8 +59,8 @@ public class DifficultyManager : MonoBehaviour
 
         LevelManager.DefeatedEnemies = 0;
         LevelManager.EnemiesCount = 0;
-        LevelManager.EnemiesMaxCount += 0.1f;
-        LevelManager.EnemiesToLevelUp += 1;
+        LevelManager.EnemiesMaxCount += _extraMaxEnemiesCountPerLevel;
+        LevelManager.EnemiesToLevelUp += _extraEnemiesToLevelUpPerLevel;
 
         LevelUpped?.Invoke(LevelManager.CurrentWave);
     }
