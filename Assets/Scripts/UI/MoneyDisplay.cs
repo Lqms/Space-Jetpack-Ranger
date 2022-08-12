@@ -12,7 +12,7 @@ public class MoneyDisplay : MonoBehaviour
     private void OnEnable()
     {
         PlayerManager.Instance.MoneyChanged += OnMoneyChanged;
-        _moneyText.text = $"{PlayerManager.Instance.MoneyAmount / _divider}K";
+        _moneyText.text = $"{PlayerManager.Instance.Money / _divider}K";
     }
 
     private void OnDisable()

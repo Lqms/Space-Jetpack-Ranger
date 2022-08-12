@@ -45,4 +45,10 @@ public class Energy : MonoBehaviour
             _isRunOut = false;
         }
     }
+
+    public void SetEnergy(int energy)
+    {
+        _max = energy;
+        _current = _max;
+    }
 }

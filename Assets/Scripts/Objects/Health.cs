@@ -48,4 +48,10 @@ public class Health : MonoBehaviour
     {
         _current = Mathf.Clamp(_current + amount, 0, _max);
     }
+
+    public void SetHealth(int health)
+    {
+        _max = health;
+        _current = _max;
+    }
 }

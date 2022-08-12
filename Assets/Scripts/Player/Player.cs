@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
         _health.Damaged += OnDamaged;
 
         _energy.RunOut += OnEnergyRunOut;
+
+        Setup();
     }
 
     private void OnDisable()
@@ -127,5 +129,12 @@ public class Player : MonoBehaviour
         _input.enabled = true;
         _rigidBody.gravityScale = 0;
         _countdownCorotine = null;
+    }
+
+    private void Setup()
+    {
+        _energy.SetEnergy(PlayerManager.Instance.Energy);
+        _health.SetHealth(PlayerManager.Instance.Health);
+        _combat.SetDamage(PlayerManager.Instance.Damage);
     }
 }

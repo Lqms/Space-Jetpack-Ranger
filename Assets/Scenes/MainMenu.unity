@@ -747,6 +747,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c887ed31d0e1a4f91813f2d398afb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _notEnoughtMoney: {fileID: 8300000, guid: 09f50c0d50defc54bbc7d05541f7f9c2, type: 3}
+  _succesfullBuy: {fileID: 8300000, guid: 4b2c73af1fec309478617436ba22d29b, type: 3}
+  _baseHealth: 250
+  _baseEnergy: 100
+  _baseDamage: 25
 --- !u!1 &999503942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,6 +1257,8 @@ MonoBehaviour:
   _bonusHealthPerLevel: 10
   _bonusDamagePerLevel: 5
   _waveMultiplicityToSave: 3
+  _extraMaxEnemiesCountPerLevel: 0.1
+  _extraEnemiesToLevelUpPerLevel: 0.2
 --- !u!1 &1366477049
 GameObject:
   m_ObjectHideFlags: 0

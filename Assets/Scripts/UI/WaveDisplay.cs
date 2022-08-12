@@ -14,7 +14,7 @@ public class WaveDisplay : MonoBehaviour
     {
         DifficultyManager.Instance.LevelUpped += OnLevelUpped;
 
-        OnLevelUpped(PlayerManager.Instance.WaveNumber);
+        OnLevelUpped(PlayerManager.Instance.Wave);
     }
 
     private void OnDisable()

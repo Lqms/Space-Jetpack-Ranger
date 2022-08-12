@@ -23,4 +23,9 @@ public class PlayerCombat : MonoBehaviour
     {
         _currentWeapon.Shoot(_shootPoint, Vector2.right, _damage);
     }
+
+    public void SetDamage(int damage)
+    {
+        _damage = damage;
+    }
 } 

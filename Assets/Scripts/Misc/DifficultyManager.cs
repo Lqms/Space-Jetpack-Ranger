@@ -68,7 +68,7 @@ public class DifficultyManager : MonoBehaviour
     public void ResetLevel()
     {
         PlayerManager.Instance.TrySaveMoney();
-        LevelManager.CurrentWave = PlayerManager.Instance.WaveNumber;
+        LevelManager.CurrentWave = PlayerManager.Instance.Wave;
         LevelManager.DefeatedEnemies = 0;
         LevelManager.EnemiesCount = 0;
     }
