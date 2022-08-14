@@ -7,12 +7,15 @@ public class Energy : MonoBehaviour
 {
     [SerializeField] private float _max = 100;
     [SerializeField] private float _wastePerSecond = 2;
+    [SerializeField] private ParticleSystem _stealEnergyEffect;
 
     private float _current;
     private bool _isRunOut = false;
 
     public float Max => _max;
     public float Current => _current;
+    public ParticleSystem StealEnergyEffect => _stealEnergyEffect;
+
 
     public event UnityAction RunOut;
     public event UnityAction Restored;
@@ -50,5 +53,10 @@ public class Energy : MonoBehaviour
     {
         _max = energy;
         _current = _max;
+    }
+
+    public void Decrease(float amount)
+    {
+        _current = Mathf.Clamp(_current - amount, 0, _max);
     }
 }
