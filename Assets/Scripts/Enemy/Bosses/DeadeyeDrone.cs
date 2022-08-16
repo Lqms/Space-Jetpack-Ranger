@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
-public class Drone : MonoBehaviour
+public class DeadeyeDrone : MonoBehaviour
 {
     [SerializeField] private Deadeye _deadeye;
     [SerializeField] private float _maxOffsetX = 1f;

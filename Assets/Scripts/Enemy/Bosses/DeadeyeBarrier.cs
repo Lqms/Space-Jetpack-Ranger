@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
-public class Barrier : MonoBehaviour
+public class DeadeyeBarrier : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _trails;
 

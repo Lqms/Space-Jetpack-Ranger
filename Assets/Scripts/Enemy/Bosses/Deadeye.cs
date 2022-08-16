@@ -6,18 +6,29 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Health))]
 public class Deadeye : MonoBehaviour
 {
-    [SerializeField] private Barrier _barrier;
-    [SerializeField] private Drone[] _drones;
+    [Header("shooting")]
+    [SerializeField] private float _minTimeBetweenShoot = 5;
+    [SerializeField] private float _maxTimeBetweenShoot = 9;
+
+    [Header("settings")]
+    [SerializeField] private DeadeyeBarrier _barrier;
+    [SerializeField] private DeadeyeDrone[] _drones;
     [SerializeField] private float _maxOffsetY = 3f;
     [SerializeField] private float _speed = 1f;
     [SerializeField] private float _dronesRespawnTime = 3f;
     [SerializeField] private Health _health;
+
+    private float _timeElapsed;
+    private float _timeBetweenShoot;
 
     private float _maxOffsetX = 0;
     private Vector3 _startPosition = Vector3.zero;
     private Vector3 _destination;
     private Coroutine _currentCoroutine;
     private int _diedDroneCounter;
+
+    public event UnityAction Shooted;
+    public event UnityAction StartShooting;
 
     private void OnEnable()
     {
@@ -28,11 +39,24 @@ public class Deadeye : MonoBehaviour
         _health.SetHealth((int)(_health.Base + LevelManager.CurrentWave * LevelManager.BossBonusHealthPerLevel));
 
         _currentCoroutine = StartCoroutine(RandomMovingCoroutine());
+        _timeBetweenShoot = Random.Range(_minTimeBetweenShoot, _maxTimeBetweenShoot);
     }
 
     private void OnDisable()
     {
         _health.Died -= OnDied;
+    }
+
+    private void Update()
+    {
+        _timeElapsed += Time.deltaTime;
+
+        if (_timeElapsed > _timeBetweenShoot)
+        {
+            _timeElapsed = 0;
+            _timeBetweenShoot = Random.Range(_minTimeBetweenShoot, _maxTimeBetweenShoot);
+            StartShoot();
+        }
     }
 
     private IEnumerator RandomMovingCoroutine()
@@ -53,6 +77,20 @@ public class Deadeye : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    private void StartShoot()
+    {
+        StopCoroutine(_currentCoroutine);
+        StartShooting?.Invoke();
+        _currentCoroutine = StartCoroutine(ShootCoroutine());
+    }
+
+    private IEnumerator ShootCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+        Shooted?.Invoke();
+        _currentCoroutine = StartCoroutine(RandomMovingCoroutine());
     }
 
     private void OnDied()
