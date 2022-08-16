@@ -11,4 +11,12 @@ public static class Randomizer
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
         return worldPosition.y;
     }
+
+    public static Vector3 RandomChangePosition(Vector3 position, float maxOffsetX, float maxOffsetY)
+    {
+        float randomX = position.x + Random.Range(-maxOffsetX, maxOffsetX);
+        float randomY = position.y + Random.Range(-maxOffsetY, maxOffsetY);
+
+        return new Vector3(randomX, randomY);
+    }
 }

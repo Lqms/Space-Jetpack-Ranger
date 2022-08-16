@@ -1250,7 +1250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1350295793
 Transform:
   m_ObjectHideFlags: 0
@@ -2208,3 +2208,94 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6673399933355381454, guid: 70115298358949142843675bee4625d8, type: 3}
   m_PrefabInstance: {fileID: 535890973}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8477223268638678274
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8477223269394740218, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_Name
+      value: Deadeye
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477223269530285957, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_Name
+      value: DeadeyeBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477223269530285962, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477223269530285962, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477223269530285962, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477223269530285962, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477223269530285962, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477223269530285962, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477223269530285962, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477223269530285962, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477223269530285962, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477223269530285962, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477223269530285962, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+--- !u!1 &8477223268638678275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8477223269530285957, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+  m_PrefabInstance: {fileID: 8477223268638678274}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8477223268638678276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477223268638678275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2786ec3db6597724f844d325ab3ce508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseReward: 1000
+  _bossHealth: {fileID: 8477223268638678277}
+--- !u!114 &8477223268638678277 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8477223269394740222, guid: c697ae8e1e728fa4ca183e8ecc0b9848, type: 3}
+  m_PrefabInstance: {fileID: 8477223268638678274}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43c52fb560999a4aba7d6ed9b6ab8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

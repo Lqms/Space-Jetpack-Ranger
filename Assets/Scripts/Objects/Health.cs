@@ -8,8 +8,8 @@ public class Health : MonoBehaviour
     [SerializeField] private float _base;
     [SerializeField] private AudioClip _hit;
     [SerializeField] private AudioClip _death;
-    [SerializeField] private float _current;
     [SerializeField] private float _max;
+    [SerializeField] private float _current;
 
     public float Max => _max;
     public float Current => _current;
