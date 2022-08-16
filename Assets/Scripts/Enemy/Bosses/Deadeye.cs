@@ -6,6 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Health))]
 public class Deadeye : MonoBehaviour
 {
+    [SerializeField] private Barrier _barrier;
     [SerializeField] private Drone[] _drones;
     [SerializeField] private float _maxOffsetY = 3f;
     [SerializeField] private float _speed = 1f;
@@ -24,6 +25,8 @@ public class Deadeye : MonoBehaviour
             _startPosition = transform.position;
 
         _health.Died += OnDied;
+        _health.SetHealth((int)(_health.Base + LevelManager.CurrentWave * LevelManager.BossBonusHealthPerLevel));
+
         _currentCoroutine = StartCoroutine(RandomMovingCoroutine());
     }
 
@@ -63,6 +66,7 @@ public class Deadeye : MonoBehaviour
         yield return new WaitForSeconds(_dronesRespawnTime);
 
         _diedDroneCounter = 0;
+        _barrier.gameObject.SetActive(true);
 
         foreach (var drone in _drones)
             drone.gameObject.SetActive(true);
@@ -73,6 +77,9 @@ public class Deadeye : MonoBehaviour
         _diedDroneCounter++;
 
         if (_diedDroneCounter == _drones.Length)
+        {
+            _barrier.gameObject.SetActive(false);
             StartCoroutine(RespawnCoroutine());
+        }
     }
 }
