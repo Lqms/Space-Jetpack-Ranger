@@ -4818,6 +4818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c684dd9ce74914645b6f0037776fde02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _prepare: {fileID: 8300000, guid: d1c53034b8459d0468860894a8343312, type: 3}
   _laserEffect: {fileID: 5191090527244324447}
   _laserTrails: {fileID: 6076529385974745620}
   _baseDamage: 100
@@ -10136,6 +10137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minTimeBetweenShoot: 5
   _maxTimeBetweenShoot: 9
+  _pauseBeforeShoot: 2
   _barrier: {fileID: 8477223268638678277}
   _drones:
   - {fileID: 8477223269123888396}

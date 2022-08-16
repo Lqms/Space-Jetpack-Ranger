@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DeadeyeLaser : MonoBehaviour
 {
+    [SerializeField] private AudioClip _prepare;
     [SerializeField] private ParticleSystem _laserEffect;
     [SerializeField] private ParticleSystem _laserTrails;
     [SerializeField] private float _baseDamage = 100;
@@ -31,6 +32,7 @@ public class DeadeyeLaser : MonoBehaviour
 
     private void OnStartShooting()
     {
+        AudioManager.Instance.PlayClip(_prepare);
         _laserTrails.Play();
         _laserEffect.Play();
     }

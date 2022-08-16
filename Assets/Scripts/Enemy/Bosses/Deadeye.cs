@@ -9,6 +9,7 @@ public class Deadeye : MonoBehaviour
     [Header("shooting")]
     [SerializeField] private float _minTimeBetweenShoot = 5;
     [SerializeField] private float _maxTimeBetweenShoot = 9;
+    [SerializeField] private float _pauseBeforeShoot = 3;
 
     [Header("settings")]
     [SerializeField] private DeadeyeBarrier _barrier;
@@ -88,7 +89,7 @@ public class Deadeye : MonoBehaviour
 
     private IEnumerator ShootCoroutine()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(_pauseBeforeShoot);
         Shooted?.Invoke();
         _currentCoroutine = StartCoroutine(RandomMovingCoroutine());
     }
