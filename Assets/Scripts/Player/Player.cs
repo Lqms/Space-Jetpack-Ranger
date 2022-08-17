@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
         _energy.RunOut += OnEnergyRunOut;
 
         Setup();
+
+        DifficultyManager.Instance.BossLevelUpped += OnBossLevelUpped;
     }
 
     private void OnDisable()
@@ -55,6 +57,8 @@ public class Player : MonoBehaviour
         _health.Died -= OnDied;
         _health.Damaged -= OnDamaged;
         _energy.RunOut -= OnEnergyRunOut;
+
+        DifficultyManager.Instance.BossLevelUpped -= OnBossLevelUpped;
     }
 
     private void FixedUpdate()
@@ -136,5 +140,12 @@ public class Player : MonoBehaviour
         _energy.SetEnergy(PlayerManager.Instance.Energy);
         _health.SetHealth(PlayerManager.Instance.Health);
         _combat.SetDamage(PlayerManager.Instance.Damage);
+    }
+
+    private void OnBossLevelUpped()
+    {
+        _health.Restore(_health.Max);
+        HealthChanged?.Invoke(_health.Current / _health.Max);
+        _energy.Restore(_energy.Max);
     }
 }
