@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3058621341511207581}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.9899998, y: -0.7, z: 0}
+  m_LocalPosition: {x: -1.08, y: -0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6093961458791468642}
@@ -9804,6 +9804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8702ae6ffe1b2d4db272f6017b52444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boss: {fileID: 8477223268638678276}
   _deadeye: {fileID: 8477223269394740220}
   _maxOffsetX: 0.5
   _maxOffsetY: 0.5
@@ -9950,6 +9951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8702ae6ffe1b2d4db272f6017b52444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boss: {fileID: 8477223268638678276}
   _deadeye: {fileID: 8477223269394740220}
   _maxOffsetX: 0.5
   _maxOffsetY: 0.5
@@ -10074,7 +10076,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0692389, y: 0}
+  m_Offset: {x: 0.23828697, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -10085,7 +10087,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7178998, y: 2.1563778}
+  m_Size: {x: 1.1352196, y: 2.1563778}
   m_EdgeRadius: 0
 --- !u!95 &8477223269394740223
 Animator:
@@ -10135,6 +10137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feec6530d184a334e9cd55cf7320fe7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boss: {fileID: 8477223268638678276}
   _minTimeBetweenShoot: 5
   _maxTimeBetweenShoot: 9
   _pauseBeforeShoot: 2
@@ -10146,7 +10149,7 @@ MonoBehaviour:
   - {fileID: 8477223269245169150}
   _maxOffsetY: 3
   _speed: 1
-  _dronesRespawnTime: 3
+  _dronesRespawnTime: 10
   _health: {fileID: 8477223269394740222}
 --- !u!1 &8477223269472870164
 GameObject:
@@ -10271,6 +10274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8702ae6ffe1b2d4db272f6017b52444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boss: {fileID: 8477223268638678276}
   _deadeye: {fileID: 8477223269394740220}
   _maxOffsetX: 0.5
   _maxOffsetY: 0.5
@@ -10339,6 +10343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2786ec3db6597724f844d325ab3ce508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 2
   _baseReward: 1000
   _bossHealth: {fileID: 8477223269394740222}
 --- !u!1 &8477223269617590177
@@ -10464,6 +10469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8702ae6ffe1b2d4db272f6017b52444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boss: {fileID: 8477223268638678276}
   _deadeye: {fileID: 8477223269394740220}
   _maxOffsetX: 0.5
   _maxOffsetY: 0.5
@@ -10596,7 +10602,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.14073277, y: -0.06472838}
+  m_Offset: {x: 0.6514108, y: 0.05363798}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -10607,7 +10613,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.2057877, y: 4.3307343}
+  m_Size: {x: 2.5850806, y: 3.6205368}
   m_EdgeRadius: 0
 --- !u!114 &4141437204117081813
 MonoBehaviour:

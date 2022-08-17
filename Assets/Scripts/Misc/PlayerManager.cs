@@ -76,11 +76,11 @@ public class PlayerManager : MonoBehaviour
         SaveHealth();
     }
 
-    public bool TrySaveWave()
+    public bool TrySaveWave(bool bossDefeated = false)
     {
         bool isWaveMultipliced = LevelManager.CurrentWave % LevelManager.WaveMultiplicityToSave == 0;
 
-        if (isWaveMultipliced)
+        if (isWaveMultipliced || bossDefeated)
         {
             PlayerPrefs.SetInt(WAVE, LevelManager.CurrentWave);
             Wave = PlayerPrefs.GetInt(WAVE);
@@ -96,11 +96,11 @@ public class PlayerManager : MonoBehaviour
         TrySaveMoney();
     }
 
-    public bool TrySaveMoney()
+    public bool TrySaveMoney(bool bossDefeated = false)
     {
         bool isWaveMultipliced = LevelManager.CurrentWave % LevelManager.WaveMultiplicityToSave == 0;
 
-        if (isWaveMultipliced)
+        if (isWaveMultipliced || bossDefeated)
         {
             PlayerPrefs.SetInt(MONEY, Money);
         }

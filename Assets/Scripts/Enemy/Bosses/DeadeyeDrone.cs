@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class DeadeyeDrone : MonoBehaviour
 {
+    [SerializeField] private Boss _boss;
     [SerializeField] private Deadeye _deadeye;
     [SerializeField] private float _maxOffsetX = 1f;
     [SerializeField] private float _maxOffsetY = 1f;
@@ -15,19 +16,21 @@ public class DeadeyeDrone : MonoBehaviour
     private Vector3 _startPosition = Vector3.zero;
     private Vector3 _destination;
     private Coroutine _currentCoroutine;
+    private bool _isShootPointReached = false;
 
     private void OnEnable()
     {
-        if (_startPosition == Vector3.zero)
-            _startPosition = transform.position;
-
         _health.Died += OnDied;
-        _currentCoroutine = StartCoroutine(RandomMovingCoroutine());
+        _boss.ShootPointReached += OnShootPointReached;
+
+        if (_isShootPointReached)
+            _currentCoroutine = StartCoroutine(RandomMovingCoroutine());
     }
 
     private void OnDisable()
     {
         _health.Died -= OnDied;
+        _boss.ShootPointReached -= OnShootPointReached;
     }
 
     private IEnumerator RandomMovingCoroutine()
@@ -55,5 +58,14 @@ public class DeadeyeDrone : MonoBehaviour
         _deadeye.OnDronDied();
         StopCoroutine(_currentCoroutine);
         gameObject.SetActive(false);
+    }
+
+    private void OnShootPointReached()
+    {
+        if (_startPosition == Vector3.zero)
+            _startPosition = transform.position;
+
+        _isShootPointReached = true;
+        _currentCoroutine = StartCoroutine(RandomMovingCoroutine());
     }
 }

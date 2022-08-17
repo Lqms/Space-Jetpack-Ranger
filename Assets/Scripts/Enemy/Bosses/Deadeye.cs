@@ -6,6 +6,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Health))]
 public class Deadeye : MonoBehaviour
 {
+    [SerializeField] private Boss _boss;
+
     [Header("shooting")]
     [SerializeField] private float _minTimeBetweenShoot = 5;
     [SerializeField] private float _maxTimeBetweenShoot = 9;
@@ -33,18 +35,15 @@ public class Deadeye : MonoBehaviour
 
     private void OnEnable()
     {
-        if (_startPosition == Vector3.zero)
-            _startPosition = transform.position;
-
+        _boss.ShootPointReached += OnShootPointReached;
         _health.Died += OnDied;
         _health.SetHealth((int)(_health.Base + LevelManager.CurrentWave * LevelManager.BossBonusHealthPerLevel));
-
-        _currentCoroutine = StartCoroutine(RandomMovingCoroutine());
         _timeBetweenShoot = Random.Range(_minTimeBetweenShoot, _maxTimeBetweenShoot);
     }
 
     private void OnDisable()
     {
+        _boss.ShootPointReached -= OnShootPointReached;
         _health.Died -= OnDied;
     }
 
@@ -58,6 +57,14 @@ public class Deadeye : MonoBehaviour
             _timeBetweenShoot = Random.Range(_minTimeBetweenShoot, _maxTimeBetweenShoot);
             StartShoot();
         }
+    }
+
+    private void OnShootPointReached()
+    {
+        if (_startPosition == Vector3.zero)
+            _startPosition = transform.position;
+
+        _currentCoroutine = StartCoroutine(RandomMovingCoroutine());
     }
 
     private IEnumerator RandomMovingCoroutine()

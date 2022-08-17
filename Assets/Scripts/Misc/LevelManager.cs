@@ -17,4 +17,6 @@ public static class LevelManager
     public static int BonusBountyPerLevel = 5;
 
     public static int WaveMultiplicityToSave = 10;
+    public static int WaveMultiplicityForBoss = 15;
+
 }

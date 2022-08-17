@@ -8,7 +8,7 @@ public class Upgrade : MonoBehaviour
 {
     [SerializeField] protected Text Cost;
 
-    protected int Multiplier = 1000;
+    protected int Multiplier = 50;
     protected int Counter = 1;
 
     private Button _buy;

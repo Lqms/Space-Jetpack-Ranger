@@ -10,12 +10,14 @@ public class DifficultyManager : MonoBehaviour
     [SerializeField] private int _bonusHealthPerLevel = 10;
     [SerializeField] private int _bonusDamagePerLevel = 5;
     [SerializeField] private int _waveMultiplicityToSave = 10;
+    [SerializeField] private int _waveMultiplicityForBoss = 15;
     [SerializeField] private float _extraMaxEnemiesCountPerLevel = 0.1f;
     [SerializeField] private float _extraEnemiesToLevelUpPerLevel = 0.2f;
 
     public static DifficultyManager Instance { get; private set; }
 
     public event UnityAction<int> LevelUpped;
+    public event UnityAction BossLevelUpped;
 
     private void OnEnable()
     {
@@ -37,6 +39,7 @@ public class DifficultyManager : MonoBehaviour
         LevelManager.BonusHealthPerLevel = _bonusHealthPerLevel;
         LevelManager.BonusDamagePerLevel = _bonusDamagePerLevel;
         LevelManager.WaveMultiplicityToSave = _waveMultiplicityToSave;
+        LevelManager.WaveMultiplicityForBoss = _waveMultiplicityForBoss;
     }
     private void OnDisable()
     {
@@ -62,7 +65,14 @@ public class DifficultyManager : MonoBehaviour
         LevelManager.EnemiesMaxCount += _extraMaxEnemiesCountPerLevel;
         LevelManager.EnemiesToLevelUp += _extraEnemiesToLevelUpPerLevel;
 
-        LevelUpped?.Invoke(LevelManager.CurrentWave);
+        if (LevelManager.CurrentWave % LevelManager.WaveMultiplicityForBoss == 0)
+        {
+            BossLevelUpped?.Invoke();
+        }
+        else
+        {
+            LevelUpped?.Invoke(LevelManager.CurrentWave);
+        }
     }
 
     public void ResetLevel()
