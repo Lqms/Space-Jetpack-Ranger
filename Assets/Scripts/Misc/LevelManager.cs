@@ -14,7 +14,7 @@ public static class LevelManager
     public static float BossBonusHealthPerLevel = 100;
     public static float BonusDamagePerLevel = 5;
     public static float BossBonusDamagePerLevel = 25;
-    public static int BonusBountyPerLevel = 5;
+    public static int BonusBountyPerLevel = 100;
 
     public static int WaveMultiplicityToSave = 10;
     public static int WaveMultiplicityForBoss = 15;
