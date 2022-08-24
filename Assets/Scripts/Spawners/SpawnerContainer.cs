@@ -29,6 +29,7 @@ public class SpawnerContainer : MonoBehaviour
     {
         DifficultyManager.Instance.BossLevelUpped += OnBossLevelUpped;
         DifficultyManager.Instance.LevelUpped += OnLevelUpped;
+        Enemy.Died +=
 
         if (LevelManager.CurrentWave % LevelManager.WaveMultiplicityForBoss == 0)
             OnBossLevelUpped();
@@ -56,5 +57,12 @@ public class SpawnerContainer : MonoBehaviour
         {
             spawner.gameObject.SetActive(true);
         }
+    }
+
+    private void OnEnemyDied()
+    {
+        HealthSpawner.Spawn(transform.position);
+        BountyUISpawner.Spawn(transform.position);
+        BountyUISpawner.Bounty.Setup(_currentBounty);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Health))]
 public class Enemy : MonoBehaviour
@@ -17,6 +18,8 @@ public class Enemy : MonoBehaviour
     private int _currentBounty;
 
     public Player Target { get; protected set; }
+
+    public static event UnityAction<Enemy> Died;
 
     protected virtual void OnEnable()
     {
@@ -47,10 +50,14 @@ public class Enemy : MonoBehaviour
 
         if (DestroyedByPlayer)
         {
+            Died?.Invoke(this);
+
+            /*
             SpawnerContainer.HealthSpawner.Spawn(transform.position);
             SpawnerContainer.BountyUISpawner.Spawn(transform.position);
             SpawnerContainer.BountyUISpawner.Bounty.Setup(_currentBounty);
             PlayerManager.Instance.IncreaseMoney(_currentBounty);
+            */
         }
 
         LevelManager.EnemiesCount--;

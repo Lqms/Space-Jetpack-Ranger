@@ -33,10 +33,10 @@ public class Boss : MonoBehaviour
 
     public void MoveToPoint(Transform point)
     {
-        StartCoroutine(MoveToPointCoroutine(point));
+        StartCoroutine(MovingToPoint(point));
     }
 
-    private IEnumerator MoveToPointCoroutine(Transform point)
+    private IEnumerator MovingToPoint(Transform point)
     {
         while (transform.position != point.position)
         {
